@@ -1,13 +1,18 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import { useQuery } from "@tanstack/react-query"
+import { getTodos } from "../apis/todos"
+import { todo } from "../../models/todos"
 
 function App() {
-  const { data } = useFruits()
+  const { data } = useQuery({
+    queryKey: ['todos'],
+    queryFn: getTodos
+  })
 
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <h1>todos</h1>
+        <ul>{data && data.map((todo: todo) => <li key={todo.id}>{todo.details}</li>)}</ul>
       </div>
     </>
   )
