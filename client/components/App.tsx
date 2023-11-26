@@ -1,3 +1,4 @@
+import AddTodo from "./AddTodo"
 import TodoList from "./TodoList"
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <div className="app">
         <h1>todos</h1>
+        <AddTodo />
         <TodoList />
       </div>
     </>
