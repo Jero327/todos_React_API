@@ -5,7 +5,6 @@ function Title() {
           <div>DETAILS</div>
           <div className="delete-btn-container">
             <div>PRIORITY</div>
-            <button>DELETE</button>
           </div>
         </div>
       </li>

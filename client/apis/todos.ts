@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { newTodo } from '../../models/todos'
+import { newTodo, updatedTodo } from '../../models/todos'
 
 const rootUrl = '/api/v1/todos'
 
@@ -15,4 +15,8 @@ export async function deleteTodoItem(todoId: number) {
 
 export async function addTodoItem(newTodo: newTodo) {
   await request.post(rootUrl).send(newTodo)
+}
+
+export async function editTodoItem(todoId: number, updatedTodo: updatedTodo) {
+  await request.put(`${rootUrl}/${todoId}`).send(updatedTodo)
 }
