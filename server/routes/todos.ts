@@ -15,4 +15,16 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.delete('/:todoId', async (req, res) => {
+  try {
+    const todoId = Number(req.params.todoId)
+    await db.deleteTodoItem(todoId)
+
+    res.sendStatus(200)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+})
+
 export default router

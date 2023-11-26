@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
-html, 
+html,
 body {
   font-family: 'Montserrat', sans-serif;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
 }
