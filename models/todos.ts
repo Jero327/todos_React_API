@@ -11,4 +11,5 @@ export interface todo extends newTodo {
 export interface updatedTodo {
   details: string
   priority: number
+  completed: boolean
 }

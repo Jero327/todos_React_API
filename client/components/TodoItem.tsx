@@ -5,7 +5,9 @@ import { useState } from "react";
 
 function TodoItem(prop: todo) {
   const [isEdit, setIsEdit] = useState(false)
+
   const queryClient = useQueryClient()
+
   const deleteTodoItemMutation = useMutation({
     mutationFn: () => deleteTodoItem(prop.id),
     onSuccess: () => queryClient.invalidateQueries(['todos']),
@@ -35,10 +37,21 @@ function TodoItem(prop: todo) {
     const updatedTodo = {
       details: details,
       priority: priority,
+      completed: prop.completed
     }
     editTodoItemMutation.mutate(updatedTodo)
 
     setIsEdit(false)
+  }
+
+  function handleCompleted(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
+    const updatedTodo = {
+      details: prop.details,
+      priority: prop.priority,
+      completed: !prop.completed,
+    }
+    editTodoItemMutation.mutate(updatedTodo)
   }
 
   return (
@@ -63,7 +76,7 @@ function TodoItem(prop: todo) {
         )
       : 
         (<div className="todo-item">
-          <div>{prop.details}</div>
+          <button className={`details-btn ${prop.completed ? 'completed' : ''}`} onDoubleClick={handleCompleted}><div>{prop.details}</div></button>
           <div className="delete-btn-container">
             <div>{prop.priority}</div>
             <button onClick={handleEdit}>EDIT</button>

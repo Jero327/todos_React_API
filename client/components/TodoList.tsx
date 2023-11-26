@@ -18,8 +18,16 @@ function TodoList() {
     <>
       <div className="todo-lists">
         <ul>
-          <Title />
-          {data && data.map((todo: todo) => <TodoItem key={todo.id} {...todo} />)}
+          {data.length>0 ? (
+            <>
+              <Title />
+              {data.map((todo: todo) => <TodoItem key={todo.id} {...todo} />)}
+              <div>Double click to mark as completed..</div>
+            </>
+            )
+          :
+            (<div>Please add your first todo</div>)
+          }
         </ul>
       </div>
     </>
