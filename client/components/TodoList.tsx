@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "../apis/todos";
 import { todo } from "../../models/todos";
 import TodoItem from "./TodoItem";
+import Title from "./Title";
 
 function TodoList() {
   const { data, isLoading, error } = useQuery({
@@ -16,7 +17,10 @@ function TodoList() {
   return (
     <>
       <div className="todo-lists">
-        <ul>{data && data.map((todo: todo) => <TodoItem key={todo.id} {...todo} />)}</ul>
+        <ul>
+          <Title />
+          {data && data.map((todo: todo) => <TodoItem key={todo.id} {...todo} />)}
+        </ul>
       </div>
     </>
   )

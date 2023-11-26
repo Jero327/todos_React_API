@@ -17,8 +17,11 @@ function TodoItem(prop: todo) {
   return (
     <li>
       <div className="todo-item">
-        {prop.details}
-        <button onClick={handleDelete}>DELETE</button>
+        <div>{prop.details}</div>
+        <div className="delete-btn-container">
+          <div>{prop.priority}</div>
+          <button onClick={handleDelete}>DELETE</button>
+        </div>
       </div>
     </li>
   )

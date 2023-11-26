@@ -8,4 +8,24 @@ body {
 .todo-item {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.delete-btn-container {
+  min-width: 150px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title button {
+  display: none;
 }
