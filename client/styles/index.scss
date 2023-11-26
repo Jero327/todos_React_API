@@ -1,6 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
 
-html, 
+html,
 body {
   font-family: 'Montserrat', sans-serif;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.delete-btn-container {
+  min-width: 150px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title button {
+  display: none;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.details-btn {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0;
+  appearance: none;
 }

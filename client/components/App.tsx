@@ -1,13 +1,14 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import AddTodo from "./AddTodo"
+import TodoList from "./TodoList"
 
 function App() {
-  const { data } = useFruits()
 
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <h1>todos</h1>
+        <AddTodo />
+        <TodoList />
       </div>
     </>
   )
