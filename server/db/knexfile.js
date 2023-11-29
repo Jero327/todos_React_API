@@ -37,7 +37,10 @@ export default {
     client: 'sqlite3',
     useNullAsDefault: true,
     connection: {
-      filename: Path.join(__dirname, 'dev.sqlite3'),
+      filename:
+        process.env.NODE_ENV === 'production'
+          ? Path.join(__dirname, 'production.sqlite3')
+          : Path.join(__dirname, 'dev.sqlite3'),
     },
     pool: {
       afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
