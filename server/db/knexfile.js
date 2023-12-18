@@ -34,15 +34,13 @@ export default {
   },
 
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
-    pool: {
-      min: 2,
-      max: 10,
+    client: 'sqlite3',
+    useNullAsDefault: true,
+    connection: {
+      filename: '/app/storage/prod.sqlite3',
     },
-    migrations: {
-      tableName: 'knex_migrations',
-      directory: Path.join(__dirname, 'migrations'),
+    pool: {
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
     },
   },
 }
