@@ -1,18 +1,34 @@
 import * as Path from 'node:path'
 import * as URL from 'node:url'
 
+import dotenv from 'dotenv'
+dotenv.config()
+
+if (!process.env.DB_PASSWORD) {
+  console.error('DB password undefined!')
+  process.exit(1)
+}
+
+const dbPassword = process.env.DB_PASSWORD
+
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
 
 export default {
   development: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'mssql', // Change the client to 'mssql' for Azure SQL Server
     connection: {
-      filename: Path.join(__dirname, 'dev.sqlite3'),
+      host: 'todoappserver1.database.windows.net',
+      user: 'todoappadmin',
+      password: dbPassword,
+      database: 'todoAppDB',
+      options: {
+        encrypt: true, // Use encryption
+      },
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      min: 2,
+      max: 10,
     },
   },
 
@@ -34,13 +50,19 @@ export default {
   },
 
   production: {
-    client: 'sqlite3',
-    useNullAsDefault: true,
+    client: 'mssql', // Change the client to 'mssql' for Azure SQL Server
     connection: {
-      filename: '/app/storage/prod.sqlite3',
+      host: 'todoappserver1.database.windows.net',
+      user: 'todoappadmin',
+      password: dbPassword,
+      database: 'todoAppDB',
+      options: {
+        encrypt: true, // Use encryption
+      },
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb),
+      min: 2,
+      max: 10,
     },
   },
 }
