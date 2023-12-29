@@ -8,7 +8,7 @@
     },
     {
       "src": "server/**",
-      "use": "npm run build:server",
+      "use": "./Dockerfile",
       "config": { "distDir": "server/dist" }
     }
   ],
