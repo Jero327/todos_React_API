@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.ts",
+      "use": "npm run build:server",
+      "config": { "distDir": "dist/server" }
+    }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "dist/server/index.ts" },
+    { "src": "/(.*)", "dest": "client/$1" }
+  ]
+}
