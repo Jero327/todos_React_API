@@ -5,9 +5,17 @@
       "src": "client/**",
       "use": "npm run build:client",
       "config": { "distDir": "client/dist" }
-    },
-    { "src": "server/**", "use": ".", "config": { "distDir": "server/dist" } }
+    }
   ],
+  "functions": {
+    "api/*": {
+      "runtime": "vercel-node@2.5.1",
+      "build": {
+        "src": "server/**",
+        "use": "./Dockerfile"
+      }
+    }
+  },
   "routes": [
     { "src": "/api/(.*)", "dest": "server/dist/index.ts" },
     { "src": "/(.*)", "dest": "client/dist/$1" }
