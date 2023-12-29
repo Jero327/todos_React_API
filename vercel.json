@@ -7,17 +7,19 @@
       "config": { "distDir": "client/dist" }
     }
   ],
-  "functions": {
-    "api/*": {
-      "runtime": "vercel-node@2.5.1",
-      "build": {
-        "src": "server/**",
-        "use": "./Dockerfile"
-      }
-    }
-  },
   "routes": [
     { "src": "/api/(.*)", "dest": "server/dist/index.ts" },
     { "src": "/(.*)", "dest": "client/dist/$1" }
-  ]
+  ],
+  "backend": {
+    "functions": {
+      "api/*": {
+        "runtime": "vercel-node@2.5.1",
+        "image": {
+          "src": "./server",
+          "use": "Dockerfile"
+        }
+      }
+    }
+  }
 }
