@@ -6,11 +6,7 @@
       "use": "npm run build:client",
       "config": { "distDir": "client/dist" }
     },
-    {
-      "src": "server/**",
-      "use": "./Dockerfile",
-      "config": { "distDir": "server/dist" }
-    }
+    { "src": "server/**", "use": ".", "config": { "distDir": "server/dist" } }
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "server/dist/index.ts" },
