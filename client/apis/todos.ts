@@ -1,7 +1,7 @@
 import request from 'superagent'
 import { newTodo, updatedTodo } from '../../models/todos'
 
-const rootUrl = 'http://localhost:5258/api/TodoApp/'
+const rootUrl = 'https://todoappapi1.azure-api.net/'
 
 export async function getTodos() {
   return await request.get(`${rootUrl}GetTodos`).then((res) => {
