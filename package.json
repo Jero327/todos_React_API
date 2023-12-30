@@ -10,7 +10,7 @@
   "scripts": {
     "test": "vitest",
     "start": "node dist/server.js",
-    "dev:client": "vite",
+    "dev": "vite",
     "build": "run-s build:client build:server",
     "build:client": "vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
