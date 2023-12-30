@@ -1,5 +1,8 @@
 # todos
 
+HOST
+https://todos-react-api.vercel.app/
+
 ## Setup
 
 ### Installation
