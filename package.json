@@ -11,9 +11,7 @@
     "test": "vitest",
     "start": "node dist/server.js",
     "dev": "vite",
-    "build": "run-s build:client build:server",
-    "build:client": "vite build",
-    "build:server": "esbuild --packages=external --platform=node --format=esm --outfile=dist/server.js --bundle server/index.ts",
+    "build": "vite build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
   "eslintConfig": {
