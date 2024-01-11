@@ -33,14 +33,33 @@ function AddTodo() {
 
   return (
     <>
-      <button onClick={handleForm}>Add</button>
+      <button
+        className="bg-blue-500 text-white p-2 rounded-md mr-2"
+        onClick={handleForm}
+      >
+        Add
+      </button>
       {form && (
-        <form onSubmit={handleSubmit}>
-          <label>New:
-            <input name="details" placeholder="What's need to be done?" required></input>
+        <form
+          className="mt-4 max-w-md mx-auto p-4 bg-gray-100 rounded-md shadow-md"
+          onSubmit={handleSubmit}
+        >
+          <label className="block mb-2 text-gray-700">
+            New:
+            <input
+              className="w-full p-2 border rounded-md"
+              name="details"
+              placeholder="What's need to be done?"
+              required
+            />
           </label>
-          <label>Priority:
-            <select name="priority" required>
+          <label className="block mb-2 text-gray-700">
+            Priority:
+            <select
+              className="w-full p-2 border rounded-md"
+              name="priority"
+              required
+            >
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -48,9 +67,14 @@ function AddTodo() {
               <option>5</option>
             </select>
           </label>
-          <input type="submit"></input>
-        </form>)
-      }
+          <button
+            type="submit"
+            className="w-full bg-green-500 text-white p-2 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:border-blue-300"
+          >
+            Submit
+          </button>
+        </form>
+      )}
     </>
   )
 }

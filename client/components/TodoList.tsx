@@ -16,18 +16,21 @@ function TodoList() {
 
   return (
     <>
-      <div className="todo-lists">
+      <div className="todo-lists mt-4 max-w-screen-lg mx-auto">
         <ul>
-          {data.length>0 ? (
+          {data.length > 0 ? (
             <>
               <Title />
-              {data.map((todo: todo) => <TodoItem key={todo.id} {...todo} />)}
-              <div>Double click to mark as completed..</div>
+              {data.map((todo: todo) => (
+                <TodoItem key={todo.id} {...todo} />
+              ))}
+              <div className="text-gray-400 mt-2">
+                Double click to mark as completed...
+              </div>
             </>
-            )
-          :
-            (<div>Please add your first todo</div>)
-          }
+          ) : (
+            <div className="text-gray-400 mt-2">Please add your first todo</div>
+          )}
         </ul>
       </div>
     </>
